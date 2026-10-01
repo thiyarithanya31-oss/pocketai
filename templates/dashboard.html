@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - PocketSmart AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body class="bg-gray-100 font-sans min-h-screen">
+    <!-- Navbar -->
+    <nav class="bg-[#1e3a8a] p-4 text-white flex justify-between items-center shadow">
+        <h1 class="text-xl font-bold">PocketSmart</h1>
+        <div class="space-x-4 text-sm flex items-center">
+            <a href="/history" class="hover:text-blue-200">History</a>
+            <a href="/logout" class="border border-white px-3 py-1 rounded hover:bg-white hover:text-[#1e3a8a]">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Welcome Banner -->
+    <div class="bg-[#2e52a8] text-white py-12 text-center pb-20">
+        <h2 class="text-4xl font-bold mb-2">Welcome!</h2>
+        <p class="text-indigo-100">Choose a budget planner to get started with your personalized financial planning experience.</p>
+    </div>
+
+    <!-- Planner Modules -->
+    <div class="max-w-6xl mx-auto mt-[-50px] p-4 relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Home -->
+            <div class="bg-white rounded-xl shadow border border-gray-100 overflow-hidden hover-lift">
+                <div class="h-32 bg-gray-200 flex items-center justify-center text-4xl">🛋️</div>
+                <div class="p-5">
+                    <h3 class="font-bold text-[#1e3a8a] text-lg mb-2">🏠 Home Budget Planner</h3>
+                    <p class="text-sm text-gray-600 mb-4">Plan your room makeover and get AI-curated recommendations for furniture, lighting, and decor.</p>
+                    <a href="/generate-home" class="block text-center bg-[#1e3a8a] text-white py-2 rounded font-bold hover:bg-blue-900">Get Started</a>
+                </div>
+            </div>
+            <!-- Party -->
+            <div class="bg-white rounded-xl shadow border border-gray-100 overflow-hidden hover-lift">
+                <div class="h-32 bg-gray-200 flex items-center justify-center text-4xl">🎈</div>
+                <div class="p-5">
+                    <h3 class="font-bold text-[#1e3a8a] text-lg mb-2">🥂 Party Budget Planner</h3>
+                    <p class="text-sm text-gray-600 mb-4">Organize your event costs perfectly. Let AI suggest venues, catering, and decorations for your celebration.</p>
+                    <a href="/generate-party" class="block text-center bg-[#1e3a8a] text-white py-2 rounded font-bold hover:bg-blue-900">Get Started</a>
+                </div>
+            </div>
+            <!-- Jewelry -->
+            <div class="bg-white rounded-xl shadow border border-gray-100 overflow-hidden hover-lift">
+                <div class="h-32 bg-gray-200 flex items-center justify-center text-4xl">💍</div>
+                <div class="p-5">
+                    <h3 class="font-bold text-[#1e3a8a] text-lg mb-2">💎 Jewelry Budget Planner</h3>
+                    <p class="text-sm text-gray-600 mb-4">Find the perfect pieces for your occasion. Match your outfit with AI-curated rings, watches, and necklaces.</p>
+                    <a href="/generate-jewelry" class="block text-center bg-[#1e3a8a] text-white py-2 rounded font-bold hover:bg-blue-900">Get Started</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="mt-12 bg-white rounded-xl shadow border border-gray-100 p-6 mb-10">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="font-bold text-[#1e3a8a] text-xl">🕒 Recent Activity</h3>
+                <a href="/history" class="text-sm text-blue-500 hover:underline">View All Recommendations History</a>
+            </div>
+            <div id="recentActivityContainer" class="space-y-3">
+                <p class="text-sm text-gray-500 italic">Fetching recent activity...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function fetchRecent() {
+            try {
+                const res = await fetch('/history');
+                const data = await res.json();
+                const container = document.getElementById('recentActivityContainer');
+                container.innerHTML = '';
+                
+                if (data.history.length === 0) {
+                    container.innerHTML = '<p class="text-sm text-gray-500">No recent activity found.</p>';
+                    return;
+                }
+
+                // Show only top 3 recent
+                data.history.slice(0, 3).forEach(item => {
+                    let icon = item.type === 'home' ? '🏠' : (item.type === 'party' ? '🥂' : '💎');
+                    container.innerHTML += `
+                        <div class="flex items-center p-3 border-b last:border-0 hover:bg-gray-50">
+                            <div class="text-2xl mr-4">${icon}</div>
+                            <div>
+                                <p class="font-bold text-gray-800 capitalize">${item.type} Budget Plan</p>
+                                <p class="text-xs text-gray-500">${new Date(item.timestamp).toLocaleString()} • Input: ${item.input}</p>
+                            </div>
+                        </div>
+                    `;
+                });
+            } catch (e) {
+                console.error("Failed to load history.");
+            }
+        }
+        fetchRecent();
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommendation History - PocketSmart AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body class="bg-gray-100 font-sans min-h-screen">
+    <!-- Navbar -->
+    <nav class="bg-[#1e3a8a] p-4 text-white flex justify-between items-center shadow">
+        <a href="/login" class="text-xl font-bold">PocketSmart</a>
+        <a href="/logout" class="text-sm border border-white px-3 py-1 rounded hover:bg-white hover:text-[#1e3a8a]">Logout</a>
+    </nav>
+
+    <div class="max-w-4xl mx-auto mt-10 p-6 bg-white rounded-xl shadow border border-gray-100">
+        <h2 class="text-2xl font-bold text-[#1e3a8a] mb-6 border-b pb-4 flex justify-between items-center">
+            <span>Recommendation History</span>
+            <a href="/login" class="text-sm font-normal text-blue-500 hover:underline">← Back to Dashboard</a>
+        </h2>
+        
+        <div id="historyList" class="space-y-4">
+            <p class="text-gray-500 italic text-center py-8">Loading history log...</p>
+        </div>
+    </div>
+
+    <script>
+        async function loadHistory() {
+            try {
+                const response = await fetch('/history');
+                const data = await response.json();
+                const container = document.getElementById('historyList');
+                container.innerHTML = '';
+                
+                if (data.history.length === 0) {
+                    container.innerHTML = '<div class="text-center py-10 bg-gray-50 rounded-lg"><p class="text-gray-500">No past recommendations found. Try generating a budget plan first!</p></div>';
+                    return;
+                }
+                
+                data.history.forEach(item => {
+                    let badgeColor = item.type === 'home' ? 'bg-blue-100 text-blue-800' : (item.type === 'party' ? 'bg-pink-100 text-pink-800' : 'bg-yellow-100 text-yellow-800');
+                    
+                    container.innerHTML += `
+                        <div class="p-5 border border-gray-200 rounded-lg hover:shadow-md transition bg-white">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="${badgeColor} text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">${item.type}</span>
+                                <span class="text-sm text-gray-500 flex items-center">🕒 ${new Date(item.timestamp).toLocaleString()}</span>
+                            </div>
+                            <p class="text-gray-800 font-medium text-lg">Query Summary: <span class="font-normal text-gray-600">${item.input}</span></p>
+                        </div>
+                    `;
+                });
+            } catch (err) {
+                document.getElementById('historyList').innerHTML = '<p class="text-red-500">Error loading history.</p>';
+            }
+        }
+        loadHistory();
+    </script>
+</body>
+</html>

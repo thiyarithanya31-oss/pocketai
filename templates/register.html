@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - PocketSmart AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body class="bg-gray-50 flex items-center justify-center min-h-screen p-4">
+    <div class="w-full max-w-md text-center">
+        <h1 class="text-3xl font-bold text-[#1e3a8a] mb-1">PocketSmart</h1>
+        <p class="text-sm text-gray-500 mb-8 font-medium">AI-Powered Budget Planning</p>
+
+        <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 text-left">
+            <h2 class="text-2xl font-bold text-[#1e3a8a] text-center mb-6">Create Your Account</h2>
+            
+            <form action="/register" method="POST" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-bold text-[#1e3a8a] mb-1">Username</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-blue-400">👤</span>
+                        <input type="text" name="username" placeholder="Choose a username" required class="w-full pl-10 pr-3 py-2 border border-gray-300 rounded custom-input">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-[#1e3a8a] mb-1">Email</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-blue-400">✉️</span>
+                        <input type="email" name="email" placeholder="Enter your email" required class="w-full pl-10 pr-3 py-2 border border-gray-300 rounded custom-input">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-[#1e3a8a] mb-1">Password</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-blue-400">🔒</span>
+                        <input type="password" name="password" placeholder="Create a strong password" required class="w-full pl-10 pr-3 py-2 border border-gray-300 rounded custom-input">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-[#1e3a8a] mb-1">Confirm Password</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-blue-400">✔️</span>
+                        <input type="password" name="confirm_password" placeholder="Confirm your password" required class="w-full pl-10 pr-3 py-2 border border-gray-300 rounded custom-input">
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-[#1e3a8a] text-white font-bold py-3 rounded mt-6 hover:bg-blue-900 transition flex justify-center items-center">
+                    Create Account 👤+
+                </button>
+            </form>
+            <p class="mt-6 text-center text-sm text-gray-600">
+                Already have an account? <a href="/login" class="text-blue-500 font-semibold hover:underline">Sign In</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

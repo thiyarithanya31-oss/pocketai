@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PocketSmart AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body class="bg-gray-50 font-sans text-gray-800">
+    <!-- Navbar -->
+    <nav class="bg-[#1e3a8a] p-4 text-white flex justify-between items-center px-8">
+        <h1 class="text-2xl font-bold">PocketSmart</h1>
+        <div class="space-x-6 text-sm flex items-center">
+            <a href="#features" class="hover:text-blue-200">Features</a>
+            <a href="#testimonials" class="hover:text-blue-200">Testimonials</a>
+            <a href="/login" class="hover:text-blue-200">Sign In</a>
+            <a href="/register" class="bg-white text-[#1e3a8a] px-4 py-2 rounded font-bold hover:bg-gray-100">Get Started</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-[#1e3a8a] text-white py-20 px-8 text-center">
+        <h2 class="text-4xl md:text-5xl font-bold mb-6">AI-Powered Budget Planning for Everyday Needs</h2>
+        <p class="text-lg text-blue-100 max-w-2xl mx-auto mb-10">Make smarter financial decisions with personalized budget recommendations for home interiors, parties, and jewelry purchases. Our AI helps you get the most value for your money.</p>
+        <div class="space-x-4">
+            <a href="/register" class="bg-white text-[#1e3a8a] px-6 py-3 rounded-lg font-bold hover:bg-gray-100">Get Started</a>
+            <a href="#features" class="border border-white text-white px-6 py-3 rounded-lg font-bold hover:bg-white hover:text-[#1e3a8a] transition">Learn More</a>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 px-8 max-w-6xl mx-auto text-center">
+        <h3 class="text-3xl font-bold mb-4 text-[#1e3a8a]">Our Smart Budget Planners</h3>
+        <p class="text-gray-600 mb-12">Discover how PocketSmart AI helps you manage costs across different areas of your life.</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover-lift border border-gray-100 text-left">
+                <div class="bg-[#1e3a8a] p-4 flex justify-center text-white text-3xl">🏠</div>
+                <div class="p-6">
+                    <h4 class="text-xl font-bold text-[#1e3a8a] mb-2">Home Interior Budget Planner</h4>
+                    <p class="text-sm text-gray-600 mb-4">Get personalized recommendations for furniture, lighting, and decor that match your preferred style and budget. Transform your space without overspending.</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover-lift border border-gray-100 text-left">
+                <div class="bg-[#1e3a8a] p-4 flex justify-center text-white text-3xl">🥂</div>
+                <div class="p-6">
+                    <h4 class="text-xl font-bold text-[#1e3a8a] mb-2">Party Budget Planner</h4>
+                    <p class="text-sm text-gray-600 mb-4">Plan your perfect event with smart budget allocations for venue, catering, decorations, and entertainment. Let our AI suggest the best options to make your event a success while staying within your budget.</p>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover-lift border border-gray-100 text-left">
+                <div class="bg-[#1e3a8a] p-4 flex justify-center text-white text-3xl">💎</div>
+                <div class="p-6">
+                    <h4 class="text-xl font-bold text-[#1e3a8a] mb-2">Jewelry Budget Planner</h4>
+                    <p class="text-sm text-gray-600 mb-4">Find the ideal jewelry pieces for any occasion that match your outfit and budget. Our AI recommends options from top brands tailored to your style preferences.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 px-8 bg-blue-50 text-center">
+        <h3 class="text-3xl font-bold mb-4 text-[#1e3a8a]">What Our Users Say</h3>
+        <p class="text-gray-600 mb-12">Real experiences from people who have transformed their financial planning with PocketSmart AI.</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div class="bg-white p-6 rounded-lg shadow text-left">
+                <p class="text-sm text-gray-600 italic mb-4">"PocketSmart helped me furnish my new apartment without breaking the bank. The AI recommendations were spot on and I saved nearly 30% of my original budget!"</p>
+                <p class="font-bold text-[#1e3a8a]">- Sarah K. <span class="text-xs text-gray-500 font-normal block">Homeowner</span></p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow text-left">
+                <p class="text-sm text-gray-600 italic mb-4">"Planning my daughter's birthday party used to be stressful, but PocketSmart made it a breeze. The AI suggested affordable decorations and catering options that were a huge hit!"</p>
+                <p class="font-bold text-[#1e3a8a]">- Michael R. <span class="text-xs text-gray-500 font-normal block">Parent</span></p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow text-left">
+                <p class="text-sm text-gray-600 italic mb-4">"The jewelry recommendations perfectly matched my outfit for the wedding. I saved so much time searching and managed to stay strictly within my budget."</p>
+                <p class="font-bold text-[#1e3a8a]">- Priya M. <span class="text-xs text-gray-500 font-normal block">Fashion Enthusiast</span></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <section class="bg-[#1e3a8a] py-16 px-8 text-center text-white">
+        <h3 class="text-2xl font-bold mb-4">Ready to Optimize Your Budget?</h3>
+        <p class="text-blue-200 mb-8 max-w-xl mx-auto">Join PocketSmart today and start making smarter financial decisions across all areas of your life.</p>
+        <div class="space-x-4">
+            <a href="/login" class="bg-white text-[#1e3a8a] px-6 py-2 rounded font-bold hover:bg-gray-100">Log In</a>
+            <a href="/register" class="border border-white text-white px-6 py-2 rounded font-bold hover:bg-white hover:text-[#1e3a8a] transition">Create Account</a>
+        </div>
+    </section>
+</body>
+</html>
